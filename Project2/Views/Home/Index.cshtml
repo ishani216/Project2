@@ -1,0 +1,25 @@
+﻿@model Price
+
+@{
+    ViewBag.Title="Price Quotation";
+    //var session = new PriceSession(Context.Session);
+    //Price price = session.GetPrice();
+}
+
+<header><h1>@ViewBag.Title</h1></header>
+<form asp-action="Index" method="post">
+    <label asp-for="Subtotal"></label>
+    <input asp-for="Subtotal" />
+    <span asp-validation-for="Subtotal" class="text-danger"></span>
+    <label asp-for="DiscountPercent"></label>
+    <input asp-for="DiscountPercent"/>
+    <span asp-validation-for="DiscountAmount" class="text-danger"></span>
+    <label asp-for="DiscountAmount"></label>
+    <div class="result">@Model.GetDiscountAmount()</div>
+    <label asp-for="Total"></label>
+    <div class="result">@Model.GetTotal()</div>
+    <div class="links">
+        <button type="submit" asp-action="Index">Calculate</button>
+        <a asp-controller="Home" asp-action="Index">Clear</a>
+    </div>
+</form>
